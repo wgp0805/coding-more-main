@@ -40,6 +40,7 @@ public class LearnWebFacadeController {
     @GetMapping(value = {"/index.html","/"})
     //这里的modelMap就相当于request.setAttribute方法，如果没有这个前端模板是不能进行取值的，https://blog.csdn.net/qq_41753340/article/details/121793399
     public String index(HttpServletRequest request, HttpServletResponse response, ModelMap model) {
+        //将request response modelMap 进行构建查询参数，下边的设计不错
         WebRequestParam webRequestParam = new WebRequestParam.Builder().request(request).response(response).model(model).build();
         return indexPageRequestStrategy.handleRequest(webRequestParam);
     }
